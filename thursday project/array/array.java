@@ -8,13 +8,13 @@ public class array {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 				int i, n, max;
-				Scanner s = new Scanner(System.in);
+				Scanner sc = new Scanner(System.in);
 				
 				int a[] = new int[10];
 				System.out.println("Enter the number:");
 				for( i = 0; i < 10; i++)
 				{
-				a[i] = s.nextInt();
+				a[i] = sc.nextInt();
 				}
 				max = a[0];
 				for( i = 0; i < 10; i++)
