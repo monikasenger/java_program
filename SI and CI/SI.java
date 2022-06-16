@@ -5,7 +5,7 @@ public class SI {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		//Write a program to accept principal amount,  rat of interest,  no of years from user and calculat rat of interest
+		//Write a program to accept principal amount,  rat of interest,  no of years from user and calculate rate of interest
 		System.out.print("Enter the Pricipal Amount = ");
 		float p = sc.nextFloat();
 		
