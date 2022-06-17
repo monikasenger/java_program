@@ -21,9 +21,7 @@ accept();
 		a[i] = sc.nextInt();
 		}
 		smallest( a , min, i);
-		{
-		  sc.close();
-	        for ( i = 0; i < 10; i++) 
+		{  for ( i = 0; i < 10; i++) 
 	        {
 	            for ( j = i + 1; j < 10; j++) { 
 	                if (a[i] > a[j]) 
@@ -35,7 +33,7 @@ accept();
 	            }
 	        }}
 		accending( a);
-	        { sc.close();
+	        {
 		        for ( i = 0; i < 10; i++) 
 		        {
 		            for ( j = i + 1; j < 10; j++) { 
@@ -62,8 +60,7 @@ accept();
 		System.out.println("\n smallest number in array:"+min);
 		}
 	public static void accending(int a[])
-	{
-		 
+	{ 
 		System.out.print("\n Array number in Ascending Order: ");
         for (int i = 0; i < 9; i++) 
         {
