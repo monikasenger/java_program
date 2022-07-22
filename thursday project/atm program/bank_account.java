@@ -1,3 +1,4 @@
+// wap to accept the account detail from user and create a atm program using encapsulation
 package thursday_project;
 
 import java.util.Scanner;
