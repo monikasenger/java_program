@@ -1,3 +1,12 @@
+/*Write a program to accept User ID and  password checks if the password is valid or not based on password policies mention below:(Using exception Handling)
+
+Password should not contain any space.
+Password should contain at least one digit(0-9).
+Password length should be between 8 to 15 characters.
+Password should contain at least one lowercase letter(a-z).
+Password should contain at least one uppercase letter(A-Z).
+Password should contain at least one special character ( @, #, %, &, !, $, etc….).*/
+
 package exception_project;
 
 import java.util.Scanner;
@@ -17,7 +26,7 @@ public class user_pass {
 		
 	}
 	
-	// class for password
+	//  creating class for password
 		public void password()
 		{
 			System.out.print("Password should not contain any space.\n"
@@ -59,9 +68,11 @@ public class user_pass {
 		        for (int i = 0; i < password.length(); i++) {
 		            char ch = password.charAt(i);
 		            if (is_Numeric(ch)) numCount++;// condition for number of password contain digit
-		            else if (up_Letter(ch)) charCount++;// condition for character are in upper case
-		            else if (lo_Letter(ch)) charCount++;// condition for character are in lower case
-		            else if((password.contains("@") || password.contains("#") // condition for special character
+		            else{ if (up_Letter(ch)) charCount++;
+				}// condition for character are in upper case
+		            else{ if (lo_Letter(ch)) charCount++;
+				}// condition for character are in lower case
+		            else {if((password.contains("@") || password.contains("#") // condition for special character
 			                 || password.contains("!") || password.contains("~")
 			                 || password.contains("$") || password.contains("%")
 			                 || password.contains("^") || password.contains("&")
@@ -72,6 +83,7 @@ public class user_pass {
 			                 || password.contains(", ") || password.contains("<")
 			                 || password.contains(">") || password.contains("?")
 			                 || password.contains("|")));
+				 }
 		            else return false; // character if nothing is true
 		        }
 		        return (charCount >= 2 && numCount >= 2);
@@ -92,11 +104,8 @@ public class user_pass {
 
 		        return (ch >= '0' && ch <= '9');
 		    }
-		    
-				
 		   
-		    
-		    
+		    // class to display the password and id 
 		    public void show()
 			{
 				
