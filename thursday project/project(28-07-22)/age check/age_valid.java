@@ -35,12 +35,12 @@ public static void main(String[] args) {
 		 if(b < 18)   
 		 {
 			 throw new ArithmeticException("\n Invalid age ...."
-			 		+ "\n age should be greater than 18"); 
+			 		+ "\n age should be greater than 18"); // throw exception for invalid age
 			
 		 }
 		 else
 		 {
-			 throw new ArithmeticException("valid age....");
+			 throw new ArithmeticException("valid age...."); // throw exception for valid age
 		 }
 	 }
 	
