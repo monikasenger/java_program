@@ -1,3 +1,12 @@
+/* Write a program to accept basic details name , Phone No , Address , user Id and password from the user .
+throw an exception if the user Id lenght is greater than 8 and password is not matched and should only contain the string value.
+ Write a Java method to check whether a string is a valid password.
+
+Password rules:
+A password must have at least ten characters.
+A password consists of only letters and digits.
+A password must contain at least two digits.*/
+
 package exception_project;
 
 import java.util.Scanner;
@@ -7,7 +16,7 @@ public class details  extends use_encapsulation{
 	private  String password,user_Id;
 	 String Phone_No;
 	static int pass_length=8;
-	 Scanner sc= new Scanner(System.in);
+	 Scanner sc= new Scanner(System.in); // scanner statement
 	 //creating accept class
 public void accept() {
 	setUser_Id(user_Id);
@@ -24,10 +33,10 @@ public void accept() {
 public void id()
 {
 	System.out.print("user_Id : ");
-	try { /// use of try catch
+	try { // use of try catch
 		id = sc.next();
 		setUser_Id(id);
-		if(id.length() != 8)
+		if(id.length() != 8) // if else condition to check the length of user id
 		{
 			throw new Exception("Enter the Valid Id ........");	
 		}
@@ -68,13 +77,13 @@ public void id()
 	// class for checking the condition for password length
 		public static boolean is_Valid_Password(String password) {
 
-	        if (password.length() < pass_length) return false;
+	        if (password.length() < pass_length) return false; // check the length of password
 
 	        int charCount = 0;
 	        int numCount = 0;
 	        for (int i = 0; i < password.length(); i++) {
 	            char ch = password.charAt(i);
-	            if (is_Numeric(ch)) numCount++;
+	            if (is_Numeric(ch)) numCount++; // conditon for 
 	            else if (is_Letter(ch)) charCount++;
 	            else return false;
 	        }
