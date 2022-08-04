@@ -17,6 +17,7 @@ public class Reverse_Order extends Thread
         n = sc.nextInt();
 	System.out.println("\nReverse is:");// print the reverse number
 	for(int i=n;i>=1;i--)// for loop execute for printing the number in reverse order
+	{
 	System.out.println(i);// print the numbers
 	try // try catch for sleep the thread
 	{
@@ -25,6 +26,6 @@ public class Reverse_Order extends Thread
 
 	catch(Exception e)
 	{
-	 }
+	 }}
 	}
 	}
