@@ -16,13 +16,14 @@ public class Remove_occurence {
 		Remove_occurence obj=new Remove_occurence();// Creating object for the class
 		obj.removechar();// calling remove character method
 	}
-
+	//creating accept class
 	public void accept() {
-		System.out.println("Enter the string  of the user: "); 
+		System.out.println("Enter the string  : "); 
 		 str=sc.nextLine();// accept the string form user
 		 System.out.println("Enter the character: "); 
 		 ch=sc.next().charAt(0);// accept the string form user
 	}
+	//creating remove character class
 	public void removechar() {
 		accept();// print the accept class details
 		int i;// declared variable
