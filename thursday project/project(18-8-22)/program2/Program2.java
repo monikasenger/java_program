@@ -6,7 +6,7 @@ package Aug_18;
 
 import java.util.Scanner;
 
-public class Program2 {
+public class program2 {
 	Scanner sc= new Scanner(System.in);
 	static String str1;
 	static String str2;
@@ -15,10 +15,11 @@ public class Program2 {
 		// TODO Auto-generated method stub
 		program2  obj=new program2 (); // creating the object of  class
 		obj.check_character();// calling check character method
-		obj.check_strings();
-		obj.swap_string();
+		obj.check_strings();// calling check  one string contain second string method
+		obj.swap_string();// calling swap the two string method
 	}
-
+	
+// create the accept class
 	public void accept() {
 		System.out.println("First String: "); // printing first string
 		 str1=sc.next().toLowerCase(); // accept first string from user
