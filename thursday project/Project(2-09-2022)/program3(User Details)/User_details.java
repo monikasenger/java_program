@@ -36,10 +36,15 @@ public class User_details {
 		public static void file_create() throws IOException {
 			System.out.println("Enter your file name to create:");
 			filename=sc.nextLine();
+			filename1=sc.nextLine();
 			//create a file
-		File obj= new File("C:\\Users\\shubham\\Desktop\\anudip\\"+filename);
+		File obj= new File(filename);
 			obj.createNewFile();
-			System.out.println("file is created with ("+filename+") name ");
+			
+			//create second file
+		File obj1= new File(filename1);
+			obj.createNewFile();
+			System.out.println("file is created with ("+filename+","+filename1+") name ");
 		}
 		
 		/******************************************/
@@ -82,28 +87,52 @@ public class User_details {
 		/**
 		 * @throws IOException *******************************/
 		
-		//creating delete the details method with throws exception
 		
 		public static void details_delete() throws IOException {
+			Scanner sc=new Scanner(System.in);
 			System.out.println("enter user id");
 			// data use to delete form file
-			String lineToRemove = sc.nextLine();
-			File inputFile = new File(filename);
-			File tempFile = new File("mona.txt");
-
-			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-			BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-			String currentLine;
-
-			while((currentLine = reader.readLine()) != null) {
-			    // trim newline when comparing with lineToRemove
-			    String trimmedLine = currentLine.trim();
-			    if(trimmedLine.equals(lineToRemove)) continue;
-			    writer.write(currentLine + System.getProperty("line.separator"));
+			String removeterm = sc.nextLine();
+			
+			String filepath= filename;
+		remove(filepath,removeterm);
+		}
+		public static void remove(String filepath, String removeterm) {
+			String tempfile=filename1;
+			File oldFile=new File(filepath);
+			File newFile=new File(tempfile);
+			String  user_id ="",name="",phone_no="",email_id="",address="";
+			try {
+			FileWriter fw= new FileWriter(tempfile, true);
+			BufferedWriter bw= new BufferedWriter(fw);
+			PrintWriter pw=new PrintWriter(bw);
+			x=new Scanner(new File(filepath));
+			x.useDelimiter("t,\n");
+					while(x.hasNext())
+					{
+					user_id=x.next();
+					name=x.next();
+					phone_no=x.next();
+					email_id=x.next();
+					address=x.next();
+					if(!user_id.equals(removeterm)) {
+						pw.println(user_id +","+name
+								+","+phone_no+","+email_id+","+
+								address);
+					}
+					}
+					x.close();
+					pw.flush();
+					pw.close();
+					oldFile.delete();
+					File dump=new File(filepath);
+					newFile.renameTo(dump);
+					}
+		catch(Exception e)
+			{
+			JOptionPane.showMessageDialog(null, "error");
 			}
-			writer.close(); 
-			reader.close(); 
-			boolean successful = tempFile.renameTo(inputFile); 
-			}
+		
+		}
 	
 }
