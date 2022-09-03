@@ -4,20 +4,22 @@
  */
 package Sep_02;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
-
 
 import javax.swing.JOptionPane;
 
 public class User_details {
-	static String filename;// globally declared the variable
-	static String name,address,email_id,user_id,password,phone_no;
+	static String filename,filename1;// globally declared the variable
+	static String name,address,email_id,password,phone_no, user_id;
 	static Scanner sc=new Scanner(System.in);
 	 private static Scanner x;
 	 
@@ -52,7 +54,7 @@ public class User_details {
 		//creating file write method with throws exception
 		public static void file_write() throws IOException {
 			Scanner sc1=new Scanner(System.in);
-			File obj= new File("C:\\Users\\shubham\\Desktop\\anudip\\"+filename);
+			File obj= new File(filename);
 			FileWriter fw1=new FileWriter(obj);
 			//create file writer for store the data
 			// to store the data  in file
@@ -60,7 +62,8 @@ public class User_details {
 		      int n=sc.nextInt(); 
 		      // user choice how many details they store in file 
 	    	  for(int i=1;i<=n;i++) 
-	    	  {	
+	    	  {	System.out.println("Enter your  UserID :");
+			user_id=sc1.nextLine();
 			System.out.println("Enter your name:");
 			name=sc1.nextLine();
 			System.out.println("Enter your  Phone No :");
@@ -69,8 +72,7 @@ public class User_details {
 			address=sc1.nextLine();
 			System.out.println("Enter your Email Id :");
 			email_id=sc1.nextLine();
-			System.out.println("Enter your  UserID :");
-			user_id=sc1.nextLine();
+			
 			System.out.println("Enter your Password :");
 			password=sc1.nextLine();
 			//write a data in the file
@@ -87,52 +89,27 @@ public class User_details {
 		/**
 		 * @throws IOException *******************************/
 		
+		//creating delete the details method with throws exception
 		
+	
 		public static void details_delete() throws IOException {
 			Scanner sc=new Scanner(System.in);
+			File input_file = new File(filename);
+			File temp_file = new File(filename1);
+			BufferedReader my_reader = new BufferedReader(new FileReader(input_file));
+			BufferedWriter my_writer = new BufferedWriter(new FileWriter(temp_file));
 			System.out.println("enter user id");
-			// data use to delete form file
-			String removeterm = sc.nextLine();
-			
-			String filepath= filename;
-		remove(filepath,removeterm);
-		}
-		public static void remove(String filepath, String removeterm) {
-			String tempfile=filename1;
-			File oldFile=new File(filepath);
-			File newFile=new File(tempfile);
-			String  user_id ="",name="",phone_no="",email_id="",address="";
-			try {
-			FileWriter fw= new FileWriter(tempfile, true);
-			BufferedWriter bw= new BufferedWriter(fw);
-			PrintWriter pw=new PrintWriter(bw);
-			x=new Scanner(new File(filepath));
-			x.useDelimiter("t,\n");
-					while(x.hasNext())
-					{
-					user_id=x.next();
-					name=x.next();
-					phone_no=x.next();
-					email_id=x.next();
-					address=x.next();
-					if(!user_id.equals(removeterm)) {
-						pw.println(user_id +","+name
-								+","+phone_no+","+email_id+","+
-								address);
-					}
-					}
-					x.close();
-					pw.flush();
-					pw.close();
-					oldFile.delete();
-					File dump=new File(filepath);
-					newFile.renameTo(dump);
-					}
-		catch(Exception e)
-			{
-			JOptionPane.showMessageDialog(null, "error");
+			String lineToRemove =sc.next();//userid to delete
+			String current_line;
+			//check the condition 
+			while((current_line = my_reader.readLine()) != null) {
+			   String trimmedLine = current_line.trim();
+			   if(trimmedLine.equals(lineToRemove)) continue;
+			   my_writer.write(current_line + System.getProperty("line.separator"));
 			}
-		
-		}
-	
+			my_writer.close();
+			my_reader.close();
+			boolean is_success = temp_file.renameTo(input_file);
+}
+
 }
