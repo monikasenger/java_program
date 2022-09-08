@@ -15,7 +15,7 @@ import java.util.LinkedList;
 
 public class Linked_List
 {
-  static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
  int num1, num2;// globally declared
   
   // main method
@@ -46,8 +46,8 @@ public class Linked_List
       if(!list1.contains(element))
  list1.add(element);
     }                                
-
-    System.out.print("Enter no.of Elements in list 2:");
+    System.out.println("**=============**=================**");
+    System.out.print("\nEnter no.of Elements in list 2:");
     num2 = Integer.parseInt(br.readLine());
   // loop for adding element in list2
     System.out.println("Enter Elements of list 2");
@@ -59,13 +59,15 @@ public class Linked_List
  
       if(!list2.contains(element))
  list2.add(element);
-    }                                
+    } 
+    System.out.println("**=============**=================**"); 
+    
 //sorting the list collection
     Collections.sort(list1);
     Collections.sort(list2);
     System.out.println("\nList 1:"+list1);
     System.out.println("List 2:"+list2);
-     
+    System.out.println("**=============**=================**");
     // loop for adding the element in union list
   for(int i=0; i < list1.size(); i++)
       list3.add(list1.get(i));
@@ -73,12 +75,13 @@ public class Linked_List
       if(!list1.contains(list2.get(i)))
  list3.add(list2.get(i));
     System.out.println("\nUnion: "+list3);
-  
+    System.out.println("**=============**=================**");
+    
     // loop for adding the element in intersection list
     for(int i=0; i < list1.size(); i++)
        list4.add(list1.get(i));
     list4.retainAll(list2);
     System.out.println("\nIntersection: "+list4);
-
+    System.out.println("**=============**=================**");
    }
 }
