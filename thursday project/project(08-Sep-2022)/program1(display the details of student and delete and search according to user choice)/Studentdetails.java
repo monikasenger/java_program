@@ -18,108 +18,126 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class  Studentdetails
 {
-	String uname;
-	 Scanner sc=new Scanner(System.in);
+	//globally declared
+	String name,email,uname,sname,semail;
+	long phone_no,sphone;                         
+	double percentage,spercentage;                                     
+	int no,i,temp;                         
+	Scanner sc=new Scanner(System.in);                 
+	ArrayList<String> u_name=new ArrayList<>(no);	   //ArrayList1
+	ArrayList<String> u_email=new ArrayList<>(no);       //ArrayList2
+	ArrayList<Long> u_phone=new ArrayList<>(no);       //ArrayList3
+	ArrayList<Double> u_percentage=new ArrayList<>(no);       //ArrayList4
 	
-	 
+	
 	 // main method
 	 public static void main(String[] args)
 		{
-		 Studentdetails obj=new  Studentdetails();
-			   obj.display();
-			   obj.search();
-			   obj.delete();
+		 Studentdetails obj=new  Studentdetails();//creating object of class
+			   obj.display();//calling display method
+			  obj.search();// calling search method
+			   obj.delete();// calling delete method
 			   }
-	 
-	 /*******************************************/
-	 
-	  ArrayList<Student_details_encap> studentData()
-	   { 
-	// Create three objects of the class Student and pass arguments to the constructor. 
-		  Student_details_encap s1 = new Student_details_encap("monika", "ms23@gmail.com","9475748394",85); 
-		  Student_details_encap s2 = new Student_details_encap("pia", "pi6@gmail.com","943564394",56 ); 
-		  Student_details_encap s3 = new Student_details_encap("tanvi", "tanvi87@gmail.com","7854648394",67); 
-		  Student_details_encap s4 = new Student_details_encap("kirti", "ki677@gmail.com","7654788894",77); 
-		  Student_details_encap s5 = new Student_details_encap("sakshi", "sak6gh@gmail.com","7677898394",67); 
-
-	// Create the object of ArrayList of generic type 'Student'. 
-	    ArrayList<Student_details_encap> studentlist = new ArrayList<Student_details_encap>(); 
-
-	// Now add Student objects in the ArrayList using reference variable studentlist. 
-	     studentlist.add(s1); 
-	     studentlist.add(s2); 
-	     studentlist.add(s3); 
-	     studentlist.add(s4); 
-	     studentlist.add(s5); 
-	// Return object reference variable 'studentlist' of the array list to the method 'studentValue'. 
-	     return studentlist; 
-	   } 
 	  
 	  /*****************************************************/
 	  
 	  //method to display the details
 	  public void display(){
-	  { 
-	  // Call AddingData class by creating object of that class. 
-		  Studentdetails  data = new Studentdetails (); 
-
-	  // Call studentData() method using reference variable data. 
-	     ArrayList<Student_details_encap> listst = data.studentData(); 
-
-	  // Now iterate and display all the Student data. 
-	     for(Student_details_encap st:listst)
-	     { 
-	       System.out.println("Student's name: " +st.name); 
-	       System.out.println("Student email id " +st.email); 
-	       System.out.println("Phone number: " +st.phone_no); 
-	       System.out.println("Percentage: " +st.percentage); 
-	     } 
-	    } 
-	  }
+		  //get size form user to store the no of user details
+		  System.out.println("Enter the number how much data you want to store the user details:\t");  
+			no=sc.nextInt();  
+			//loop for storing the data according the size given by user
+			for(i=1;i<=no;i++) { 
+				System.out.println("\nDetails of "+i +" user........");
+				System.out.println("\nEnter user name:");    //name of user
+				name=sc.next();		
+				System.out.println("Enter user E-mail:");       //email of user
+				email=sc.next();		
+				System.out.println("Enter user Phone no:");     //phone no of user
+				phone_no=sc.nextLong();	
+				System.out.println("Enter user Percentage :");   //percentage of user
+				percentage=sc.nextDouble();
+				
+			 //stored the data in array list
+			u_name.add(name);   
+			u_email.add(email);
+			u_phone.add(phone_no);
+			u_percentage.add(percentage);
+			}
+			  System.out.println("**=============**=================**");
+			  //display the details of user in array list
+			System.out.println("\n\t\t\t\t...........Details of users are................");
+			System.out.println("\nNames of users: "+u_name);					
+			System.out.println("Emails of users: "+u_email);					
+			System.out.println("Phone Nos of users: "+u_phone);					
+			System.out.println("Percentages of users: "+u_percentage);
+			  System.out.println("**=============**=================**");
+}
+	  
+	  
+ /******************************************/
+	  
+	  //method to search
+	  public void search() {
+		  System.out.println("\n\t\t\t\t...... SEARCH THE DATA FROM LIST.......");
+		 //accept  the name from user to delete the data from list
+			System.out.println("Enter the name of user for search:");           
+			name=sc.next();
+			//condition to search the data in the list
+			if(u_name.contains(name))                          
+			{
+				// if condition is true than search the data
+				u_name.indexOf(name);
+				temp=u_name.indexOf(name);
+				 sname=u_name.get(temp);
+				 semail=u_email.get(temp);
+				 sphone=u_phone.get(temp);
+				 spercentage=u_percentage.get(temp);
+				 // display the details of user for which we are searching
+				System.out.println("\tSearching data of user ...........");
+			System.out.println("Name of user= "+sname);
+			System.out.println("Email id of user= "+semail);
+			System.out.println("Phone no of user= "+sphone);
+			System.out.println("Percentage of user= "+spercentage);
+			 System.out.println("**=============**=================**");
+			}
+			else
+			{// if condition is false than print statement
+				System.out.println("\nUser data does not find......");
+			}
+			}
+	  
 	  
 	  /*******************************************************/
 	  
 	  //method to delete
 	  public void delete() {
-		  Studentdetails  data = new Studentdetails (); 
-
-		  // Call studentData() method using reference variable data. 
-		     ArrayList<Student_details_encap> listst = data.studentData(); 
-		     System.out.println("Enter the Name to delete : ");
-				uname = sc.next();
-		  // Now iterate and display all the Student data. 
-		     for(Student_details_encap st:listst) {
-		    	 if(st.name==uname) {
-		    		int a= st.name.indexOf(uname);
-		    		 listst.remove(a);
-		    		 System.out.println("Student's name: " +st.name); 
-		  	       System.out.println("Student email id " +st.email); 
-		  	       System.out.println("Phone number: " +st.phone_no); 
-		  	       System.out.println("Percentage: " +st.percentage);
-		    	 }
-		     }
-	  }
-	  
-	  /******************************************/
-	  
-	  //method to search
-	  public void search() {
-		  Studentdetails  data = new Studentdetails (); 
-
-		  // Call studentData() method using reference variable data. 
-		     ArrayList<Student_details_encap> listst = data.studentData(); 
-		     System.out.println("Enter the Name to search : ");
-				uname = sc.next();
-		  // Now iterate and display all the Student data. 
-		     for(Student_details_encap st:listst) {
-		    	 if(st.name==uname) {
-		    		int a= st.name.indexOf(uname);
-		    		 listst.get(a);
-		    		 System.out.println("Student's name: " +st.name); 
-		  	       System.out.println("Student email id " +st.email); 
-		  	       System.out.println("Phone number: " +st.phone_no); 
-		  	       System.out.println("Percentage: " +st.percentage);
-		    	 }
-		     }
-	  }
+		  System.out.println("\n\t\t\t\t...... DELETE THE DATA FROM LIST.......");
+		  //accept the name from user for delete the data for list
+			System.out.println("Enter the name of user to delete:");           
+			uname=sc.next();
+			//condition to delete the data in the list
+			if(u_name.contains(uname))                          
+			{
+				// if condition is true than delete the data form list 
+				u_name.indexOf(uname);
+				temp=u_name.indexOf(uname);
+				u_name.remove(temp);
+				u_email.remove(temp);
+				u_phone.remove(temp);
+				u_percentage.remove(temp);
+				System.out.println("\nUser data deleted successfully......!");
+				 // display the details of user after delete the data
+				System.out.println("\tAfter delete the data of user ...........");
+				System.out.println("Name of user= "+u_name);
+				System.out.println("Email id of user= "+u_email);
+				System.out.println("Phone no of user= "+u_phone);
+				System.out.println("Percentage of user= "+u_percentage);
+				 System.out.println("**=============**=================**");
+			}
+			else
+			{// if condition is false than print statement
+				System.out.println("\nUser data does not find......");
+			}		  
+			}		 		
 }
